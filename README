@@ -1,0 +1,36 @@
+2010-01-19
+Begin Ramble:
+ 
+So I'm part of a coworking community in Manhattan called New Work City (http://nwcny.com). We use the Wifidog
+hotspot software (http://wifidog.org). It provides a lot, including a customizable portal page for each hotspot. I
+found the most important piece of information on that page was the list of who was at the hotspot now. From there I
+could tell how crowded it was and if some people I wanted to see were in the house.
+ 
+The problem: the portal page is kind of hidden unless you're actually at the hotspot. It's public, but the URL is a
+long string that includes the hotspot's node id:
+https://auth.nycwireless.net/portal/?node_id=c86b27e6bf325a8d2054d15234136fea
+ 
+Ugh. I didn't want to see the whole page, just the user list. So first I created a shortlink to the portal page
+(http://bit.ly/inthehouse). Then I put a couple requests on the wifidog mailing list about how to pull just this
+info. They're talking about doing an API, but it didn't sound like it'd happen immediately.
+ 
+So I did some research and realized you can use Javascript JQuery to parse the page. You just need something to load
+it for the Javascript. The tutorial is here:
+http://papermashup.com/use-jquery-and-php-to-scrape-page-content/
+ 
+There are really just three files:
+* curl.php - loads the portal page. To see a different location, you'll want to paste in the URL of your portal page
+from the auth server.
+* index.htm - calls curl.php, grabs just the divs for the user list, and then renders that with HTML
+* ajax-loader.gif - pretty spinning wheel
+ 
+This could be better. It could be a real RSS feed, for one. It could also do away with the PHP and do it some way
+that's programming-language-agnostic. If not it could have simple versions of different coders' server side language
+of choice (ASP, Ruby on Rails, Python, etc.)
+ 
+Open to hacking.
+ 
+Rob
+rob@robkelley.net
+ 
+ 
