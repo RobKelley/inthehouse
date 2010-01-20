@@ -1,5 +1,7 @@
 <html>
 <head>
+<!-- refresh code - currently commented out -->
+<!-- <meta http-equiv="refresh" content="60"> -->
 <!-- include wifidog stylesheets -->
 <link rel="stylesheet" type="text/css" 	href="https://auth.nycwireless.net/media/base_theme/stylesheet.css"> 
 <link rel="stylesheet" type="text/css" media="print"	href="https://auth.nycwireless.net/media/base_theme/printer.css">
@@ -20,10 +22,30 @@ $("document").ready(function() {
   $("#content").load("curl.php #online_users, #recent_users, #active_users");
 });
 </script>
+<!-- do big ugly time formatting -->
+<script type="text/javascript">
+  var currentTime = new Date()
+  var hours = currentTime.getHours()
+  var minutes = currentTime.getMinutes()
+
+  var suffix = "AM";
+  if (hours >= 12) {
+  suffix = "PM";
+  hours = hours - 12;
+  }
+  if (hours == 0) {
+  hours = 12;
+  }
+
+  if (minutes < 10)
+  minutes = "0" + minutes
+</script>
 </head>
 <body>
 <div>
     <h1>User List</h1>
+<div><p><script type="text/javascript">document.write("("+ hours + ":" + minutes + " " + suffix+")")
+</script></p> 
         <div id="content"><img src="ajax-loader.gif" alt="Loading..." />
         </div>
 <p>
